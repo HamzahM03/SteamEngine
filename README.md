@@ -1,6 +1,7 @@
 # Steam Game Recommendation System
 
 A content-based recommendation system that suggests similar Steam games based on user input. Get 5 personalized game recommendations by simply entering a game title.
+<img width="2000" height="2000" alt="Steam Engine" src="https://github.com/user-attachments/assets/a829f996-e988-4d35-b276-8ebd96a2398e" />
 
 ## Overview
 
@@ -33,6 +34,7 @@ The recommendation engine uses the "Top 1000 Steam Games" dataset from Kaggle, w
 1. **Input**: User enters the exact name of a Steam game
 2. **Processing**: The system analyzes game features and finds similar titles
 3. **Output**: Displays 5 games most similar to the input game
+<img width="1344" height="906" alt="example" src="https://github.com/user-attachments/assets/6c42067d-0d48-4891-b792-311be9e664ac" />
 
 ## Current Limitations
 
