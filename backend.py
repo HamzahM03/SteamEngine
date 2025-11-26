@@ -65,9 +65,13 @@ app.add_middleware(
 
 #ENDPOINTS
 
-@app.get("/")
+app = FastAPI(lifespan=lifespan)
+
+@app.api_route("/", methods=["GET", "HEAD"])
 def home():
+    # Render sends HEAD / to check if the service is healthy
     return {"message": "Recommendation API is Running."}
+
 
 @app.get("/games")
 def get_games(limit: int = 10, search: str = None):
