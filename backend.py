@@ -5,6 +5,7 @@ import pandas as pd
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import linear_kernel
 
 dataset_context = {}
 
@@ -35,7 +36,7 @@ async def lifespan(app: FastAPI):
             df['combined_features'] = df['genres'] + " " + df['about_the_game'].astype(str).str.slice(0, 500)
 
             # Create Matrix
-            tfidf = TfidfVectorizer(stop_words='english', max_features=5000)
+            tfidf = TfidfVectorizer(stop_words='english', max_features=2000)
             feature_matrix = tfidf.fit_transform(df['combined_features'])
             
             # Save to Context
@@ -113,7 +114,7 @@ def get_recommendation(game_name: str):
 
     # ML LOGIC
     target_vec = feature_matrix.getrow(idx)
-    sim_scores = cosine_similarity(target_vec, feature_matrix).flatten()
+    sim_scores = linear_kernel(target_vec, feature_matrix).flatten()
     
     similar_idx = sim_scores.argsort()[-6:-1][::-1]
     results = df.iloc[similar_idx]
