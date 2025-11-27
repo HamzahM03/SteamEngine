@@ -73,7 +73,6 @@ app.add_middleware(
 
 #ENDPOINTS
 
-app = FastAPI(lifespan=lifespan)
 
 @app.api_route("/", methods=["GET", "HEAD"])
 def home():
